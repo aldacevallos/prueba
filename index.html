@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protección Total | Seguros para tu tranquilidad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #f3f4f6;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #0d9488);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo-text span {
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #0d9488 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: #5eead4;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #dbeafe;
+            max-width: 500px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-social {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar-group {
+            display: flex;
+        }
+
+        .avatar-group img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -10px;
+            object-fit: cover;
+        }
+
+        .avatar-group img:first-child {
+            margin-left: 0;
+        }
+
+        .avatar-more {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: -10px;
+        }
+
+        .hero-rating {
+            color: white;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-rating p {
+            font-size: 0.875rem;
+            margin: 0;
+            color: #bfdbfe;
+        }
+
+        /* Quote Card */
+        .quote-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .quote-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-icon {
+            width: 48px;
+            height: 48px;
+            background: #eff6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+            font-size: 1.25rem;
+        }
+
+        .quote-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .quote-header p {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            background: #f9fafb;
+            font-size: 0.95rem;
+            color: #111827;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .form-check input {
+            margin-top: 0.25rem;
+            width: 16px;
+            height: 16px;
+            accent-color: #2563eb;
+        }
+
+        .form-check label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .quote-footer {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .quote-footer i {
+            color: #22c55e;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: #f9fafb;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid #f3f4f6;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #e5e7eb;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon.blue { background: #eff6ff; color: #2563eb; }
+        .service-icon.orange { background: #fff7ed; color: #ea580c; }
+        .service-icon.purple { background: #faf5ff; color: #9333ea; }
+        .service-icon.green { background: #f0fdf4; color: #16a34a; }
+        .service-icon.indigo { background: #eef2ff; color: #4f46e5; }
+        .service-icon.teal { background: #f0fdfa; color: #0d9488; }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-features li i {
+            color: #22c55e;
+            font-size: 0.875rem;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2563eb;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: gap 0.3s;
+        }
+
+        .service-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            padding: 6rem 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: #eff6ff;
+            transform: skewX(-12deg);
+            transform-origin: top right;
+            opacity: 0.5;
+        }
+
+        .why-us-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-us-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .why-us-content h2 span {
+            color: #2563eb;
+        }
+
+        .why-us-content > p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+
+        .feature-icon.blue { background: #eff6ff; color: #2563eb; }
+        .feature-icon.teal { background: #f0fdfa; color: #0d9488; }
+        .feature-icon.orange { background: #fff7ed; color: #ea580c; }
+        .feature-icon.purple { background: #faf5ff; color: #9333ea; }
+
+        .feature-item h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-item p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .why-us-image {
+            position: relative;
+        }
+
+        .why-us-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .why-us-image::before {
+            content: '';
+            position: absolute;
+            inset: -16px;
+            background: linear-gradient(135deg, #2563eb, #0d9488);
+            border-radius: 32px;
+            opacity: 0.2;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -24px;
+            left: -24px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            max-width: 280px;
+        }
+
+        .floating-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .floating-card-icon {
+            width: 40px;
+            height: 40px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #16a34a;
+        }
+
+        .floating-card h4 {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .floating-card .stat {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2563eb;
+            margin: 0.5rem 0;
+        }
+
+        .floating-card p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: #f9fafb;
+        }
+
+        .testimonials-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .testimonial-text {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-info h4 {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .testimonial-author-info p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: #f9fafb;
+            border: none;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #111827;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f3f4f6;
+        }
+
+        .faq-question i {
+            color: #9ca3af;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: white;
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        .faq-answer p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1e3a8a, #1e40af, #0f766e);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.1;
+            mix-blend-mode: overlay;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: #bfdbfe;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .cta-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: #bfdbfe;
+            font-size: 0.875rem;
+        }
+
+        .cta-badges i {
+            color: #4ade80;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand .logo-text {
+            color: white;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #1f2937;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #2563eb;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #2563eb;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: #2563eb;
+            margin-top: 0.25rem;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 0;
+            border-top: 1px solid #1f2937;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #111827;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: #4ade80;
+            font-size: 1.25rem;
+        }
+
+        .toast-content strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-content span {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .nav-cta .btn-primary { display: none; }
+            
+            .hero-content { 
+                grid-template-columns: 1fr; 
+                text-align: center;
+                padding-top: 2rem;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { margin: 0 auto 2rem; }
+            .hero-buttons { justify-content: center; }
+            .hero-social { justify-content: center; }
+            
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .why-us-container { grid-template-columns: 1fr; }
+            .why-us-image { order: -1; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .cta h2 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .stats-container { grid-template-columns: 1fr; }
+            .floating-card { position: relative; bottom: auto; left: auto; margin-top: 1rem; max-width: 100%; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #f3f4f6;
+            padding: 1rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .mobile-menu .btn-primary {
+            display: flex;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span class="logo-text">Protección<span>Total</span></span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="#cotizar" class="btn-primary">
+                    <i class="fas fa-calculator"></i>
+                    Cotizar Ahora
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#cotizar" class="btn-primary">Cotizar Ahora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Protegiendo lo que más importa desde 2005
+                </div>
+                <h1>Seguros que <span>realmente</span> te protegen</h1>
+                <p>Coberturas personalizadas para tu hogar, auto, vida y negocio. Precios competitivos, atención 24/7 y el respaldo de las mejores aseguradoras del país.</p>
+                <div class="hero-buttons">
+                    <a href="#cotizar" class="btn-primary" style="background: white; color: #1e40af;">
+                        Obtener Cotización
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#servicios" class="btn-secondary">Ver Servicios</a>
+                </div>
+                <div class="hero-social">
+                    <div class="avatar-group">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Cliente">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Cliente">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Cliente">
+                        <div class="avatar-more">+2k</div>
+                    </div>
+                    <div class="hero-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p>4.9/5 en Google Reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" id="cotizar">
+                <div class="quote-header">
+                    <div class="quote-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div>
+                        <h3>Cotización Rápida</h3>
+                        <p>Obtén tu precio en menos de 2 minutos</p>
+                    </div>
+                </div>
+                <form id="quoteForm" onsubmit="handleQuote(event)">
+                    <div class="form-group">
+                        <label>Tipo de Seguro</label>
+                        <select required>
+                            <option value="">Selecciona un tipo...</option>
+                            <option value="auto">Seguro de Auto</option>
+                            <option value="hogar">Seguro de Hogar</option>
+                            <option value="vida">Seguro de Vida</option>
+                            <option value="medico">Seguro Médico</option>
+                            <option value="negocio">Seguro de Negocio</option>
+                            <option value="viaje">Seguro de Viaje</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido</label>
+                            <input type="text" placeholder="Tu apellido" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" placeholder="correo@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono (opcional)</label>
+                        <input type="tel" placeholder="55 1234 5678">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Acepto recibir información sobre seguros y política de privacidad</label>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span id="btnText">Solicitar Cotización</span>
+                        <i class="fas fa-paper-plane" id="btnIcon"></i>
+                    </button>
+                </form>
+                <div class="quote-footer">
+                    <i class="fas fa-lock"></i>
+                    Tus datos están protegidos con encriptación SSL
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="15000">0</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="98">0%</div>
+                <div class="stat-label">Recomendación</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="24">0h</div>
+                <div class="stat-label">Atención Continua</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="20">0+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="section-header">
+            <span class="section-tag">Nuestros Servicios</span>
+            <h2 class="section-title">Protección integral para cada etapa de tu vida</h2>
+            <p class="section-subtitle">Ofrecemos soluciones de seguros personalizadas que se adaptan a tus necesidades específicas y presupuesto.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon blue"><i class="fas fa-car"></i></div>
+                <h3>Seguro de Auto</h3>
+                <p>Cobertura completa contra accidentes, robo y daños a terceros. Incluye asistencia vial 24/7.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Cobertura amplia</li>
+                    <li><i class="fas fa-check"></i> Deducible reducido</li>
+                    <li><i class="fas fa-check"></i> Auto sustituto</li>
+                </ul>
+                <a href="#cotizar" class="service-link">Cotizar Auto <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon orange"><i class="fas fa-home"></i></div>
+                <h3>Seguro de Hogar</h3>
+                <p>Protege tu patrimonio contra incendios, inundaciones, robos y desastres naturales.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Reconstrucción completa</li>
+                    <li><i class="fas fa-check"></i> Bienes personales</li>
+                    <li><i class="fas fa-check"></i> Protección contra terremotos</li>
+                </ul>
+                <a href="#cotizar" class="service-link">Cotizar Hogar <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon purple"><i class="fas fa-heart"></i></div>
+                <h3>Seguro de Vida</h3>
+                <p>Asegura el futuro financiero de tu familia con planes temporales y permanentes.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Sin examen médico</li>
+                    <li><i class="fas fa-check"></i> Cobertura hasta $5M</li>
+                    <li><i class="fas fa-check"></i> Beneficios en vida</li>
+                </ul>
+                <a href="#cotizar" class="service-link">Cotizar Vida <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon green"><i class="fas fa-user-md"></i></div>
+                <h3>Seguro Médico</h3>
+                <p>Acceso a la red médica más amplia del país. Cobertura nacional e internacional.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Hospitalización</li>
+                    <li><i class="fas fa-check"></i> Maternidad</li>
+                    <li><i class="fas fa-check"></i> Telemedicina</li>
+                </ul>
+                <a href="#cotizar" class="service-link">Cotizar Médico <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon indigo"><i class="fas fa-briefcase"></i></div>
+                <h3>Seguro de Negocio</h3>
+                <p>Protección integral para PYMES y empresas con cobertura de propiedad y ciberseguro.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Responsabilidad profesional</li>
+                    <li><i class="fas fa-check"></i> Ciberseguro</li>
+                    <li><i class="fas fa-check"></i> Fianzas y garantías</li>
+                </ul>
+                <a href="#cotizar" class="service-link">Cotizar Negocio <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon teal"><i class="fas fa-plane"></i></div>
+                <h3>Seguro de Viaje</h3>
+                <p>Viaja con tranquilidad. Cobertura médica internacional y asistencia 24h en cualquier país.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Asistencia médica global</li>
+                    <li><i class="fas fa-check"></i> Cancelación por cualquier causa</li>
+                    <li><i class="fas fa-check"></i> Deportes extremos</li>
+                </ul>
+                <a href="#cotizar" class="service-link">Cotizar Viaje <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="nosotros">
+        <div class="why-us-container">
+            <div class="why-us-content">
+                <span class="section-tag">¿Por Qué Elegirnos?</span>
+                <h2>Más que un seguro, una <span>relación de confianza</span></h2>
+                <p>Durante 20 años hemos protegido a miles de familias y empresas. Nuestro compromiso va más allá de vender pólizas: te acompañamos en cada etapa con asesoría personalizada.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon blue"><i class="fas fa-award"></i></div>
+                        <div>
+                            <h4>Aseguradoras A-Rated</h4>
+                            <p>Trabajamos exclusivamente con compañías calificadas A o superior por calificadoras internacionales.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon teal"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Atención 24/7/365</h4>
+                            <p>Nuestro centro de atención nunca cierra. Reporta siniestros y recibe asistencia en cualquier momento.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon orange"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div>
+                            <h4>Precios Competitivos</h4>
+                            <p>Comparamos cotizaciones entre múltiples aseguradoras para garantizarte el mejor precio del mercado.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon purple"><i class="fas fa-mobile-alt"></i></div>
+                        <div>
+                            <h4>App Móvil</h4>
+                            <p>Gestiona tus pólizas, reporta siniestros y consulta documentos desde tu celular en tiempo real.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-us-image">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Equipo de asesores">
+                <div class="floating-card">
+                    <div class="floating-card-header">
+                        <div class="floating-card-icon"><i class="fas fa-check-circle"></i></div>
+                        <h4>Siniestros Resueltos</h4>
+                    </div>
+                    <div class="stat">98%</div>
+                    <p>de satisfacción en resolución de reclamaciones</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonios">
+        <div class="section-header">
+            <span class="section-tag">Testimonios</span>
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <p class="section-subtitle">La confianza de nuestros asegurados es nuestro mayor activo.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Tuve un accidente automovilístico y en menos de 24 horas ya tenía auto sustituto. La atención fue excepcional y el trato humano hizo toda la diferencia."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Carlos Mendoza">
+                    <div class="testimonial-author-info">
+                        <h4>Carlos Mendoza</h4>
+                        <p>Cliente desde 2019 - Seguro de Auto</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Cuando se inundó mi casa, pensé que sería un proceso eterno. Me sorprendió la rapidez y eficiencia con la que resolvieron todo. Recomendados al 100%."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop" alt="María González">
+                    <div class="testimonial-author-info">
+                        <h4>María González</h4>
+                        <p>Cliente desde 2021 - Seguro de Hogar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Como dueño de una PYME, necesitaba proteger mi negocio sin complicaciones. El equipo me explicó todo con claridad y encontraron la cobertura perfecta."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Roberto Sánchez">
+                    <div class="testimonial-author-info">
+                        <h4>Roberto Sánchez</h4>
+                        <p>Cliente desde 2020 - Seguro de Negocio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="faq-container">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-tag">Preguntas Frecuentes</span>
+                <h2 class="section-title">Resolvemos tus dudas</h2>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ¿Cuánto tiempo tarda en activarse mi seguro?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>La mayoría de nuestras pólizas se activan de inmediato una vez completado el pago y la documentación. Para seguros de vida puede requerirse un período de evaluación de 24-48 horas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ¿Puedo pagar mi seguro en mensualidades?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Sí, ofrecemos planes de pago mensual, trimestral y semestral sin cargos adicionales por fraccionamiento en la mayoría de nuestros productos.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ¿Qué documentos necesito para contratar un seguro?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Generalmente necesitarás identificación oficial, comprobante de domicilio y datos del bien a asegurar. Para seguros de auto también se requiere tarjeta de circulación. Te guiamos paso a paso.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ¿Cómo reporto un siniestro?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Puedes reportar 24/7 a través de nuestra app móvil, línea telefónica 800-123-4567 o en nuestra página web. Nuestro equipo te guiará durante todo el proceso.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ¿Puedo cancelar mi póliza si ya no la necesito?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Sí, puedes cancelar en cualquier momento. Si cancelas antes del vencimiento anual, se te reembolsará el prorrateo del tiempo no utilizado según las condiciones de tu contrato.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+            <h2>¿Listo para proteger lo que más importa?</h2>
+            <p>Obtén tu cotización gratuita en minutos. Sin compromisos, sin presiones. Solo la mejor protección para ti y tu familia.</p>
+            <div class="cta-buttons">
+                <a href="#cotizar" class="btn-primary" style="background: white; color: #1e40af;">
+                    Cotizar Gratis Ahora
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="tel:8001234567" class="btn-secondary">
+                    <i class="fas fa-phone-alt"></i>
+                    800-123-4567
+                </a>
+            </div>
+            <div class="cta-badges">
+                <span><i class="fas fa-check-circle"></i> Cotización sin costo</span>
+                <span><i class="fas fa-check-circle"></i> Sin compromiso</span>
+                <span><i class="fas fa-check-circle"></i> Atención inmediata</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="logo-text">Protección<span style="color: #60a5fa;">Total</span></span>
+                </a>
+                <p>Protegiendo familias y empresas desde 2005 con las mejores coberturas del mercado y atención personalizada.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Servicios</h4>
+                <ul class="footer-links">
+                    <li><a href="#servicios">Seguro de Auto</a></li>
+                    <li><a href="#servicios">Seguro de Hogar</a></li>
+                    <li><a href="#servicios">Seguro de Vida</a></li>
+                    <li><a href="#servicios">Seguro Médico</a></li>
+                    <li><a href="#servicios">Seguro de Negocio</a></li>
+                    <li><a href="#servicios">Seguro de Viaje</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#">Blog y Recursos</a></li>
+                    <li><a href="#">Carreras</a></li>
+                    <li><a href="#">Prensa</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Av. Insurgentes Sur 1234, Piso 8<br>Col. Del Valle, CDMX, 03100</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>800-123-4567</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>contacto@protecciontotal.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Lun-Vie: 9:00 - 18:00<br>Sáb: 10:00 - 14:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Protección Total. Todos los derechos reservados.</p>
+            <span><i class="fas fa-shield-alt" style="color: #22c55e;"></i> Regulado por la CNSF | Sitio seguro SSL</span>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <div class="toast-content">
+            <strong>¡Cotización enviada!</strong>
+            <span>Te contactaremos en menos de 24 horas.</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            
+            // Open clicked one if it wasn't active
+            if (!isActive) {
+                answer.classList.add('active');
+                button.classList.add('active');
+            }
+        }
+
+        // Quote Form Handler
+        function handleQuote(e) {
+            e.preventDefault();
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const originalText = btnText.textContent;
+            
+            btnText.textContent = 'Enviando...';
+            btnIcon.className = 'fas fa-spinner fa-spin';
+            
+            setTimeout(() => {
+                btnText.textContent = originalText;
+                btnIcon.className = 'fas fa-paper-plane';
+                showToast();
+                document.getElementById('quoteForm').reset();
+            }, 1500);
+        }
+
+        // Toast Notification
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counters
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const suffix = counter.textContent.replace(/[0-9]/g, '');
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+                        
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current).toLocaleString() + suffix;
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString() + suffix;
+                            }
+                        };
+                        updateCounter();
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobileMenu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
